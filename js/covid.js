@@ -238,23 +238,23 @@ $("#CountryButton").on("click",function(){
 //     alert("Bye")
 // })
 
+// OBSOLETE JQuery Code
 
+// $("#Covid").on("click",function(event){
+//     $("#InfoParagraph").text("COVID-19 has symptoms similar to pneumonia... check the WHO information page listed above or speak to your local doctor. IGNORE UNVALIDATED INFO ON SOCIAL MEDIA")
+//     $("#HeartIcon").removeClass("fas fa-heart")
+// })
 
-$("#Covid").on("click",function(event){
-    $("#InfoParagraph").text("COVID-19 has symptoms similar to pneumonia... check the WHO information page listed above or speak to your local doctor. IGNORE UNVALIDATED INFO ON SOCIAL MEDIA")
-    $("#HeartIcon").removeClass("fas fa-heart")
-})
+// $("#Etiquette").on("click",function(event){
+//     $("#InfoParagraph").text("Please practise good respiratory hygiene; cough and sneeze into a tissue or a flexed elbow. Discard any tissues into a bin and then sanitise your hands ")
+//     $("#HeartIcon").removeClass("fas fa-heart")
+// })
 
-$("#Etiquette").on("click",function(event){
-    $("#InfoParagraph").text("Please practise good respiratory hygiene; cough and sneeze into a tissue or a flexed elbow. Discard any tissues into a bin and then sanitise your hands ")
-    $("#HeartIcon").removeClass("fas fa-heart")
-})
-
-$("#Persevere").on("click",function(event){
-    $("#InfoParagraph").text("We'll get through this. Listen to the authorities, look out for one another and stay healthy.")
-    $("#HeartIcon").addClass("fas fa-heart")
+// $("#Persevere").on("click",function(event){
+//     $("#InfoParagraph").text("We'll get through this. Listen to the authorities, look out for one another and stay healthy.")
+//     $("#HeartIcon").addClass("fas fa-heart")
     
-})
+// })
 
 
 // var Indices = [];
