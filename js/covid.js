@@ -239,10 +239,7 @@ $("#CountryButton").on("click",function(){
 // })
 
 
-$("#FluVsCovid").on("click",function(event){
-    $("#InfoParagraph").text("This is NOT like the flu... it's far more contagious and NO ONE is immune")
-    $("#HeartIcon").removeClass("fas fa-heart")
-})
+
 $("#Covid").on("click",function(event){
     $("#InfoParagraph").text("COVID-19 has symptoms similar to pneumonia... check the WHO information page listed above or speak to your local doctor. IGNORE UNVALIDATED INFO ON SOCIAL MEDIA")
     $("#HeartIcon").removeClass("fas fa-heart")
