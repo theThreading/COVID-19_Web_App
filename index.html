@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/covid.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous">
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
+
+    <script src="https://www.lactame.com/lib/ml/4.0.0/ml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/bootstrap-slider.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/css/bootstrap-slider.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script> -->
+    <!-- <script>
+        jQuery.noConflict();
+    </script> -->
+    
+
+    
+    <title>COVID-19 Information</title>
+</head>
+
+<body>
+ 
+  <div class="jumbotron">
+      
+        <h3>
+            COVID-19
+            <small class="text-muted">Below are the key worldwide figures</small>
+          </h3>        
+        
+          
+<div class="table-responsive-sm-md-lg">
+  <table class="table table-hover w-auto">
+    <tbody>
+      <tr class="table-primary">
+        <th scope="row" >Total Cases</th>
+        <td><span id="TotalCases"></span></td>
+        
+      </tr>
+      <tr class="table-success"> 
+        <th scope="row">Recovered</th>
+        <td><span id="Recovered"></span></td>
+      
+      </tr>
+      <tr class="table-danger">
+        <th scope="row">Deaths</th>
+        <td><span id="Deaths"></span></td>
+      
+      </tr>
+      <tr class="table-secondary">
+          <th scope="row">Active Infections</th>
+          <td><span id="Limbo"></span></td>
+        
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="lead"><strong>Below are links to the WHO and NICD websites. It has <u>valid</u> information regarding the pandemic</strong></p>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="btn btn-outline-info" class="nav-link active" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019">WHO</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-info" class="nav-link" href="http://www.nicd.ac.za/diseases-a-z-index/covid-19/">NICD</a>
+          </li>
+        </ul>
+        
+      
+      </div>
+
+      <div class="container-fluid" id="InfoButton">
+        <a tabindex="0" id="PopOverButton" class="btn btn-md btn-primary" role="button" data-toggle="popover" data-trigger="focus" title="The Facts" data-content="This is NOT like the flu... it's far more contagious and NO ONE is immune"><i class="fas fa-exclamation-triangle"></i></a>
+        <a tabindex="0" id="PopOverButton" class="btn btn-md btn-secondary" role="button" data-toggle="popover" data-trigger="focus" title="The Symptoms" data-content="COVID-19 has symptoms similar to pneumonia... check the WHO information page listed above or speak to your local doctor. IGNORE UNVALIDATED INFO ON SOCIAL MEDIA"><i class="fas fa-lungs-virus"></i></a>
+        <a tabindex="0" id="PopOverButton" class="btn btn-md btn-success" role="button" data-toggle="popover" data-trigger="focus" title="The Etiquette" data-content="Please practise good respiratory hygiene; cough and sneeze into a tissue or a flexed elbow. Discard any tissues into a bin and then sanitise your hands "><i class="fas fa-head-side-cough-slash"></i></a>
+        <a tabindex="0" id="PopOverButton" class="btn btn-md btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="The Big Picture" data-content="We'll get through this. Listen to the authorities, look out for one another and stay healthy."><i class="fas fa-shield-virus"></i></a>
+
+        <!-- <button type="button" class="btn btn-primary" id="FluVsCovid"><i class="fas fa-exclamation-triangle"></i></button>
+        <button type="button" class="btn btn-secondary" id="Covid"><i class="fas fa-lungs-virus"></i></button>
+        <button type="button" class="btn btn-success" id="Etiquette"><i class="fas fa-head-side-cough-slash"></i></button>
+        <button type="button" class="btn btn-danger" id="Persevere"><i class="fas fa-shield-virus"></i></button> -->
+        
+        <p class="lead" id="InfoParagraph">Click on one of the  buttons above for more useful information</p>
+        <span id="Heart"><i id="HeartIcon"></i></span>
+
+      </div>
+      
+      
+      
+     <br>
+      <div class="container-fluid">
+        <blockquote class="blockquote">
+          <h1 class="display-4">Compare RSA's case with another nations
+                
+          </h1>
+        </blockquote>
+        <div class="row">
+          <div class="col">
+            <canvas id="myChart" width="50" height="50"></canvas>
+          </div>
+          <div class="col">
+            <canvas id="mySecondChart" width="50" height="50"></canvas>
+          </div>
+        </div>
+      <!-- <div class="container-fluid">
+        <canvas id="myChart" width="50" height="50"></canvas>
+        <canvas id="mySecondChart" width="50" height="50"></canvas>
+  
+        </div> -->
+        <div class="card">
+          <div class="card-body">
+            <p class="lead">Enter the name of the country you would like to compare</p>
+            <input type="text" class="form-control" id="CountryInput"  placeholder="Enter Country Name">
+            <br>
+            <button class="btn btn-primary" id="CountryButton">Compare</button>
+          </div>
+        </div>      
+        </div>
+        <br>
+        <div class="container-fluid" id="PredictionDiv">
+          <h1 class="display-3">COVID 19 RSA Case Prediction
+                
+          </h1>
+          <p class="lead">Adjust the day scroller below to view the case amount</p>
+          <a tabindex="0" id="PopOverButton1" class="btn btn-md btn-info" role="button" data-toggle="popover" data-trigger="focus" title="Model Information" data-content="Crude estimate using a 4th order polynomial (regression), where the training data is the amount of reported cases per day">What's going on here?</a>
+          <br>
+          <div class="row">
+            <div class="col">
+              <canvas id="PredictionChart"></canvas>
+              <!-- <label for="customRange3">Example range</label>
+              <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3"> -->
+              <div slider id="slider-distance">
+                <div>
+                  <div inverse-left style="width:70%;"></div>
+                  <div inverse-right style="width:70%;"></div>
+                  <div range style="left:30%;right:40%;"></div>
+                  <span thumb style="left:30%;"></span>
+                  <span thumb style="left:60%;"></span>
+                  <div sign style="left:30%;">
+                    <span id="value">30</span>
+                  </div>
+                  <div sign style="left:60%;">
+                    <span id="value">60</span>
+                  </div>
+                </div>
+                <input id="MinValue" type="range" tabindex="0" value="30" max="100" min="0" step="1" oninput="
+                this.value=Math.min(this.value,this.parentNode.childNodes[5].value-1);
+                var value=(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.value)-(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.min);
+                var children = this.parentNode.childNodes[1].childNodes;
+                children[1].style.width=value+'%';
+                children[5].style.left=value+'%';
+                children[7].style.left=value+'%';children[11].style.left=value+'%';
+                children[11].childNodes[1].innerHTML=this.value;" />
+              
+                <input id="MaxValue" type="range" tabindex="0" value="60" max="100" min="0" step="1" oninput="
+                this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
+                var value=(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.value)-(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.min);
+                var children = this.parentNode.childNodes[1].childNodes;
+                children[3].style.width=(100-value)+'%';
+                children[5].style.right=(100-value)+'%';
+                children[9].style.left=value+'%';children[13].style.left=value+'%';
+                children[13].childNodes[1].innerHTML=this.value;" />
+              </div>
+              
+            </div>
+            <br>
+          </div>
+        <!-- <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <canvas id="PredictionChart"  width="50" height="50"></canvas>
+            </div>
+          </div>
+              
+             -->
+        </div>
+        <br>
+        <div class="container-fluid">
+          <h1 class="display-3">COVID 19 Case Distribution
+                
+          </h1>
+          <p class="lead" id="ParaInfo">These nations have more than 10000 cases</p>
+          <div class="row">
+            <div class="col">
+              <canvas id="SummaryPieChart"></canvas>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col">
+              <p class="lead" id="StatsPara">The countries listed above comprise <span id="FractionWorldCases"></span>% of the <span id="ActualTotalCases"></span> cases world wide</p>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+
+              <!-- <ol id="CaseRankings">
+                
+
+              </ol> -->
+              <h1 class="display-3">COVID 19 Case Ranking
+                
+              </h1>
+              
+              <ul class="list-group" id="CaseRankings">
+                
+            
+              </ul>
+            </div> 
+
+          </div>
+
+        </div>
+
+        <!-- <div id="DrawingDiv">
+          <canvas id="myCanvas">
+
+          </canvas>
+        </div> -->
+        
+
+      
+      <script src="js/covid.js"></script>
+</body>
+</html>
